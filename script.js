@@ -1,5 +1,4 @@
-// Some mobile browsers need user interaction to play music
+// Some devices block autoplay until user interacts
 document.body.addEventListener("click", () => {
-  const audio = document.getElementById("bg-music");
-  audio.play();
+  document.getElementById("bg-music").play();
 });
