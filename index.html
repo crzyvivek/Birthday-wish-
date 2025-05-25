@@ -2,12 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday</title>
+  <title>Happy Birthday to me</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Flex centering for full container */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cake {
+      margin-top: 30px;
+    }
+
+    .bubbles {
+      z-index: 0;
+    }
+
+    .wish {
+      z-index: 2;
+    }
+
+    .cake, .bubbles {
+      z-index: 1;
+    }
+
+    /* Optional play button */
+    #playMusicBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4081;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #playMusicBtn:hover {
+      background: #e91e63;
+    }
+  </style>
 </head>
 <body>
+  <button id="playMusicBtn">Play Music</button>
+
   <div class="container">
-    <h1 class="wish">Happy Birthday!</h1>
+    <h1 class="wish">Happy Birthday to me!</h1>
 
     <div class="cake">
       <div class="plate"></div>
@@ -30,10 +86,16 @@
 
   <footer>Created by Vivek</footer>
 
-  <audio autoplay loop>
+  <audio id="bgMusic" loop>
     <source src="happy-birthday.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('playMusicBtn').addEventListener('click', function () {
+      const music = document.getElementById('bgMusic');
+      music.play();
+      this.style.display = 'none'; // hide after playing
+    });
+  </script>
 </body>
 </html>
